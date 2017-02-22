@@ -45,7 +45,7 @@ def renderJSONElement(i):
     #opens file
     openedDataBuffer = open('../store/' + str(i) + '.json', 'r')
     #reads file
-    openedData = openedDataBuffer.read()
+    openedData = openedDataBuffer.read() 
     j = 0
     string = ''
     while j < len(openedData):
