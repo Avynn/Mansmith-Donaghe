@@ -45,7 +45,7 @@ def renderJSONElement(i):
     #opens file
     openedDataBuffer = open('../store/' + str(i) + '.json', 'r')
     #reads file
-    openedData = openedDataBuffer.read() 
+    openedData = openedDataBuffer.read()
     j = 0
     string = ''
     while j < len(openedData):
@@ -63,14 +63,12 @@ def parseJSONStoreData(i):
     #function calls self with modified iterand and updated list
     inList = []
     if os.path.exists('../store/' + str(i) + '.json'):
-        print('ping!')
         JSONElement = renderJSONElement(i)
         j = 0
         k = 0
         returnValues = []
         while j < len(JSONElement):
             if JSONElement[j] == ':':
-                print(k)
                 returnValuestoAppend, j = stringSlicer(JSONElement, j, k)
                 returnValues.append(returnValuestoAppend)
                 k += 1
@@ -81,6 +79,28 @@ def parseJSONStoreData(i):
         return "NULL"
 
 
-print(parseJSONStoreData(2))
+#print(parseJSONStoreData(3))
+
+def dataCleaner(i):
+    cleanArray = []
+    element = parseJSONStoreData(i)
+    for j in range(0,4):
+        cleanArray.append(float(element[j][1:len(element[j]) - 1]))
+    cleanArray.append(element[5][1:])
+    return cleanArray
+
+#dataCleaner(3)
+
+def initializeTeamData():
+    teamData = []
+    i = 2
+    while True:
+        if os.path.exists('../store/' + str(i) + '.json'):
+            teamData.append(dataCleaner(i))
+            i += 1
+        else:
+            return teamData
+
+print(initializeTeamData())
 
 #############/note#############
