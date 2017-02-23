@@ -78,9 +78,6 @@ def parseJSONStoreData(i):
     else:
         return "NULL"
 
-
-#print(parseJSONStoreData(3))
-
 def dataCleaner(i):
     cleanArray = []
     element = parseJSONStoreData(i)
@@ -89,9 +86,9 @@ def dataCleaner(i):
     cleanArray.append(element[5][1:])
     return cleanArray
 
-#dataCleaner(3)
 
 def initializeTeamData():
+    #print('ping!')
     teamData = []
     i = 2
     while True:
@@ -100,7 +97,5 @@ def initializeTeamData():
             i += 1
         else:
             return teamData
-
-print(initializeTeamData())
 
 #############/note#############
