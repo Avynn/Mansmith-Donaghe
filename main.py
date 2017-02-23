@@ -10,9 +10,19 @@ if not path in sys.path:
 del path
 
 import statCalculator
+import dataParser
+import teamRanker
 ###/local imports###
+
+
+teamData = dataParser.initializeTeamData()
 
 i = 0
 while i < 43:
-    print(statCalculator.calculateScores(i, .15, .4, .2, 15))
+    statScore = statCalculator.calculateScores(i, .15, .4, .2, 15)
+    teamData[i].append(statScore)
     i += 1
+
+#print(teamData)
+
+print(teamRanker.findMinimumIndex(teamData, 0))
