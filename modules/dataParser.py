@@ -1,5 +1,9 @@
 import os.path
 
+path = 'store/'
+if __name__ == "__main__":
+    path = '../store/'
+
 class Team:
     def __init__ (self, FreThrowMade, feilGolPrct, rebMar, name):
         self.FreThrowMade = FreThrowMade
@@ -43,7 +47,7 @@ def renderJSONElement(i):
     POST: one string with the contents of a JSON file is produced
     '''
     #opens file
-    openedDataBuffer = open('../store/' + str(i) + '.json', 'r')
+    openedDataBuffer = open(path + str(i) + '.json', 'r')
     #reads file
     openedData = openedDataBuffer.read()
     j = 0
@@ -62,7 +66,7 @@ def parseJSONStoreData(i):
     '''
     #function calls self with modified iterand and updated list
     inList = []
-    if os.path.exists('../store/' + str(i) + '.json'):
+    if os.path.exists(path + str(i) + '.json'):
         JSONElement = renderJSONElement(i)
         j = 0
         k = 0
@@ -88,12 +92,12 @@ def dataCleaner(i):
 
 
 def initializeTeamData():
-    #print('ping!')
     teamData = []
     i = 2
     while True:
-        if os.path.exists('../store/' + str(i) + '.json'):
+        if os.path.exists(path + str(i) + '.json'):
             teamData.append(dataCleaner(i))
+            print(dataCleaner(i))
             i += 1
         else:
             return teamData

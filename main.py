@@ -8,13 +8,11 @@ path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'modules'))
 if not path in sys.path:
     sys.path.insert(1, path)
 del path
+
+import statCalculator
 ###/local imports###
 
-import dataParser
-
-teamData = dataParser.initializeTeamData()
-
 i = 0
-while i < len(teamData):
-    print(teamData[i])
+while i < 43:
+    print(statCalculator.calculateScores(i, .15, .4, .2, 15))
     i += 1
