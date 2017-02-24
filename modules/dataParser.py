@@ -1,8 +1,8 @@
 import os.path
 
-path = 'store/'
-if __name__ == "__main__":
-    path = '../store/'
+path = '../store/'
+#if __name__ == "__main__":
+#    path = '../store/'
 
 class Team:
     def __init__ (self, FreThrowMade, feilGolPrct, rebMar, name):

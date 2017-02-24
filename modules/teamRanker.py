@@ -1,4 +1,4 @@
-import dataParser, statCalculator
+import dataParser, statCalculator, doctest
 
 teamData = dataParser.initializeTeamData()
 
@@ -12,31 +12,23 @@ def findMinimumIndex(aList, pos):
     '''
     PRE: takes a list and a position on that list
     POST: returns the position of the lowest value
+    >>> findMinimumIndex([[0, 0 ,0, 0, 0, 3],[0, 0, 0, 0, 0, 5],[0, 0, 0, 0, 0, 2],[0, 0, 0, 0, 0, 8]], 0)
+    2
+    >>> findMinimumIndex([[0, 0 ,0, 0, 0, 12],[0, 0, 0, 0, 0, 78],[0, 0, 0, 0, 0, 45],[0, 0, 0, 0, 0, 20]], 0)
+    0
+    >>> findMinimumIndex([[0, 0 ,0, 0, 0, 0.2],[0, 0, 0, 0, 0, 0.75],[0, 0, 0, 0, 0, 0.89],[0, 0, 0, 0, 0, 0.15]], 0)
+    3
     '''
     #print(pos)
-    lowest = 10000
-    while True:
+    lowest = pos + 1
+    while pos < len(aList):
         b = pos + 1
-        if pos == len(aList) - 2:
-            print('position %d, length of list %d' % (pos, len(aList)))
-            print('lowest is: %d' % lowest)
-            return lowest
-        elif aList[pos][5] <= lowest:
-            print(str(float(aList[pos][5])) + ' < ' + str(lowest))
+        if aList[pos][5] <= aList[lowest][5]:
             lowest = pos
-            print('%d' % aList[lowest][5])
-            print('=============')
             pos += 1
-#        elif aList[pos][5] <= aList[b][5]:
-#            print('%d is less than %d' % (pos, b))
-#            print(str(float(aList[pos][5])) + ' < ' + str(float(aList[b][5])))
-#            lowest = pos
-#            print('%d' % aList[lowest][5])
-#            print('===========')
-#            pos += 1
-        elif aList[pos][5] > lowest:
-            print('%d is more than %d' % (pos, b))
-            print(str(float(aList[pos][5])) + ' > ' + str(float(aList[b][5])))
-            print('%d' % aList[lowest][5])
-            print('=========')
+        else:
             pos += 1
+    return lowest
+
+if __name__ == "__main__":
+    doctest.testmod()
