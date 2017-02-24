@@ -25,4 +25,6 @@ while i < 43:
     i += 1
 
 
-print(teamData[teamRanker.findMinimumIndex(teamData, 0)])
+minimumIndex = teamRanker.findMinimumIndex(teamData, 0)
+print(minimumIndex)
+print(teamData[minimumIndex])
