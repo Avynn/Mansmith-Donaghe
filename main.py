@@ -21,8 +21,8 @@ i = 0
 while i < 43:
     statScore = statCalculator.calculateScores(i, .15, .4, .2, 15)
     teamData[i].append(statScore)
+    print(teamData[i])
     i += 1
 
-#print(teamData)
 
-print(teamRanker.findMinimumIndex(teamData, 0))
+print(teamData[teamRanker.findMinimumIndex(teamData, 0)])

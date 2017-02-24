@@ -97,7 +97,6 @@ def initializeTeamData():
     while True:
         if os.path.exists(path + str(i) + '.json'):
             teamData.append(dataCleaner(i))
-            print(dataCleaner(i))
             i += 1
         else:
             return teamData

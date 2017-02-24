@@ -38,7 +38,7 @@ class MetaData:
 
 def calculateScores(iteration, freThrowMadeWeight, feilGolPrctWeight, rebMarWeight, trnOvrMarWeight):
     meta = MetaData()
-    
+
     FreThrowMadeOutputRaw = (meta.teamData[iteration][0] - meta.freThrowMadeRankingsWorst)/(meta.freThrowMadeRankingsBest - meta.freThrowMadeRankingsWorst)
     FreThrowMadeOutput = FreThrowMadeOutputRaw * freThrowMadeWeight
 
@@ -52,5 +52,3 @@ def calculateScores(iteration, freThrowMadeWeight, feilGolPrctWeight, rebMarWeig
     trnOvrMarOutput = trnOvrMarOutputRaw * trnOvrMarWeight
 
     return FreThrowMadeOutput + feilGolPrctOutput + rebMarOutput + trnOvrMarOutput
-
-print(calculateScores(1, .15, .4, .2, 15))
