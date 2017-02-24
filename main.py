@@ -21,7 +21,7 @@ i = 0
 while i < 43:
     statScore = statCalculator.calculateScores(i, .15, .4, .2, 15)
     teamData[i].append(statScore)
-    print(teamData[i])
+    #print(teamData[i])
     i += 1
 
 
