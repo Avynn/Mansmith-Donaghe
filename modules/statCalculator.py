@@ -11,7 +11,7 @@ class MetaData:
     for i in teamData:
         freThrowMadeRankings.append(i[0])
         freThrowMadeRankings.sort()
-    print(freThrowMadeRankings)
+    #print(freThrowMadeRankings)
 
     feilGolPrctRankings = []
     for i in teamData:
@@ -60,4 +60,10 @@ def calculateScores(iteration, freThrowMadeWeight, feilGolPrctWeight, rebMarWeig
     trnOvrMarOutputRaw = (meta.teamData[iteration][3] - meta.trnOvrMarRankingsWorst)/(meta.trnOvrMarRankingsBest - meta.trnOvrMarRankingsWorst)
     trnOvrMarOutput = trnOvrMarOutputRaw * trnOvrMarWeight
 
+
     return FreThrowMadeOutput + feilGolPrctOutput + rebMarOutput + trnOvrMarOutput
+
+calculateScores(5, .15, .4, .2, .15)
+calculateScores(23, .15, .4, .2, .15)
+calculateScores(14, .15, .4, .2, .15)
+calculateScores(2, .15, .4, .2, .15)

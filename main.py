@@ -19,7 +19,7 @@ teamData = dataParser.initializeTeamData()
 
 i = 0
 while i < 43:
-    statScore = statCalculator.calculateScores(i, .15, .4, .2, 15)
+    statScore = statCalculator.calculateScores(i, .15, .4, .2, .15)
     teamData[i].append(statScore)
     #print(teamData[i][5])
     i += 1
@@ -27,7 +27,7 @@ while i < 43:
 teamRanker.sortTeams(teamData)
 
 j = len(teamData) - 1
-#while j >= 0:
-#    print(j)
-#    print(teamData[j])
-#    j -= 1
+while j >= 0:
+    print(j)
+    print(teamData[j])
+    j -= 1
