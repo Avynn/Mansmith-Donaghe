@@ -1,15 +1,8 @@
 import os.path
 
-path = '../store/'
-#if __name__ == "__main__":
-#    path = '../store/'
-
-class Team:
-    def __init__ (self, FreThrowMade, feilGolPrct, rebMar, name):
-        self.FreThrowMade = FreThrowMade
-        self.feilGolPrct = feilGolPrct
-        self.rebMar = rebMar
-        self.name = name
+path = 'store/'
+if __name__ == "__main__":
+    path = '../store/'
 
 ###########note#############
 '''
@@ -83,6 +76,11 @@ def parseJSONStoreData(i):
         return "NULL"
 
 def dataCleaner(i):
+    '''
+    int -> list
+    PRE: takes list.
+    POST: removes extraneous quotations around data.
+    '''
     cleanArray = []
     element = parseJSONStoreData(i)
     for j in range(0,4):
@@ -92,6 +90,11 @@ def dataCleaner(i):
 
 
 def initializeTeamData():
+    '''
+    void -> list
+    PRE: utilizes previously written functions.
+    POST: populates an array with team data from store.
+    '''
     teamData = []
     i = 2
     while True:

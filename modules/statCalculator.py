@@ -1,6 +1,9 @@
 import dataParser
 
 class MetaData:
+    '''
+    defines the best and worst stats for each category.
+    '''
     teamData = dataParser.initializeTeamData()
     #print(teamData)
 
@@ -8,6 +11,7 @@ class MetaData:
     for i in teamData:
         freThrowMadeRankings.append(i[0])
         freThrowMadeRankings.sort()
+    print(freThrowMadeRankings)
 
     feilGolPrctRankings = []
     for i in teamData:
@@ -37,6 +41,11 @@ class MetaData:
     trnOvrMarRankingsWorst = trnOvrMarRankings[0]
 
 def calculateScores(iteration, freThrowMadeWeight, feilGolPrctWeight, rebMarWeight, trnOvrMarWeight):
+    '''
+    int, float, float, float, float -> float
+    PRE: Takes the iteration and the weights of the stats.
+    POST: using the iteration the function calculates the coresponding team's "score".
+    '''
     meta = MetaData()
 
     FreThrowMadeOutputRaw = (meta.teamData[iteration][0] - meta.freThrowMadeRankingsWorst)/(meta.freThrowMadeRankingsBest - meta.freThrowMadeRankingsWorst)
