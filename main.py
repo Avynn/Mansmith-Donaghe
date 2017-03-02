@@ -30,25 +30,26 @@ class MetaData:
     '''
     defines the best and worst stats for each category.
     '''
+    metaTeamData = dataParser.initializeTeamData()
 
     freThrowMadeRankings = []
-    for i in teamData:
+    for i in metaTeamData:
         freThrowMadeRankings.append(i[0])
         freThrowMadeRankings.sort()
     #print(freThrowMadeRankings)
 
     feilGolPrctRankings = []
-    for i in teamData:
+    for i in metaTeamData:
         feilGolPrctRankings.append(i[1])
         feilGolPrctRankings.sort()
 
     rebMarRankings = []
-    for i in teamData:
+    for i in metaTeamData:
         rebMarRankings.append(i[2])
         rebMarRankings.sort()
 
     trnOvrMarRankings = []
-    for i in teamData:
+    for i in metaTeamData:
         trnOvrMarRankings.append(i[3])
         trnOvrMarRankings.sort()
 
@@ -69,7 +70,7 @@ class MetaData:
 
 i = 0
 while i < teamDataLength:
-    statScore = statCalculator.calculateScores(i, .15, .4, .2, .15, MetaData)
+    statScore = statCalculator.calculateScores(i, .15, .4, .2, .15, MetaData, teamData)
     teamData[i].append(statScore)
     #print(teamData[i][5])
     i += 1
@@ -84,10 +85,14 @@ while True:
         newCategory.addNewCategory(teamData)
     elif userSelection == 'newteam':
         teamData.append(newTeams.addNewTeam(statsPrototype))
+        #print(teamData)
+        print('\n')
         teamDataLength = len(teamData) - 1
-        print(teamDataLength + 1)
-        statCalculator.calculateScores(43, .15, .4, .2, .15, MetaData)
+        print('\n')
+        teamData[teamDataLength].append(statCalculator.calculateScores(teamDataLength, .15, .4, .2, .15, MetaData, teamData))
         teamRanker.sortTeams(teamData)
+        print('the new team is: ')
+        print(teamData[teamDataLength])
         print('success!')
         print('\n\n')
     elif userSelection == 'list':

@@ -41,12 +41,9 @@ class MetaData:
     trnOvrMarRankingsBest = trnOvrMarRankings[len(freThrowMadeRankings) - 1]
     trnOvrMarRankingsWorst = trnOvrMarRankings[0]
 
-
-
-
 i = 0
 while i < teamLength:
-    statScore = statCalculator.calculateScores(i, .15, .4, .2, 15, MetaData)
+    statScore = statCalculator.calculateScores(i, .15, .4, .2, 15, MetaData, teamData)
     teamData[i].append(statScore)
     i += 1
 
@@ -62,7 +59,7 @@ def findMinimumIndex(aList, pos):
     >>> findMinimumIndex([[0, 0, 0, 0, 0, 0.2],[0, 0, 0, 0, 0, 0.75],[0, 0, 0, 0, 0, 0.89],[0, 0, 0, 0, 0, 0.15]], 0)
     3
     '''
-    #print(pos)
+    #print(aList)
     lowest = pos + 1
     while pos < len(aList):
         if pos == len(aList) - 1:
@@ -99,8 +96,9 @@ def sortTeams(aList):
     PRE: takes a list.
     POST: sorts list by the fith index of all it's indicies.
     '''
+    print('ping!')
     i = 0
-    while i < teamLength - 1:
+    while i < teamLength:
         #print(i)
         posSwapper(aList, i, findMinimumIndex(aList, i))
         i+=1
