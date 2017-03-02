@@ -94,7 +94,7 @@ while True:
         j = len(teamData) - 1
         while j >= 0:
             print(teamData[j])
-            j -= 1
+            j -= 1 
         print('\n\n')
     elif userSelection == 'help':
         print('available commands are:')
