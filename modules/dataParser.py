@@ -1,8 +1,8 @@
 import os.path
 
-path = '../store/'
-#if __name__ == "__main__":
-#    path = '../store/'
+path = 'store/'
+if __name__ == "__main__":
+    path = '../store/'
 
 ###########note#############
 '''
@@ -48,6 +48,7 @@ def renderJSONElement(i):
     while j < len(openedData):
         string = string + openedData[j]
         j = j + 1
+    openedDataBuffer.close()
     return string
 
 def parseJSONStoreData(i):
