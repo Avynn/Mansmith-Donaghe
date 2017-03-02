@@ -85,14 +85,8 @@ while True:
         newCategory.addNewCategory(teamData)
     elif userSelection == 'newteam':
         teamData.append(newTeams.addNewTeam(statsPrototype))
-        #print(teamData)
-        print('\n')
-        teamDataLength = len(teamData) - 1
-        print('\n')
         teamData[teamDataLength].append(statCalculator.calculateScores(teamDataLength, .15, .4, .2, .15, MetaData, teamData))
         teamRanker.sortTeams(teamData)
-        print('the new team is: ')
-        print(teamData[teamDataLength])
         print('success!')
         print('\n\n')
     elif userSelection == 'list':
@@ -104,10 +98,10 @@ while True:
         print('\n\n')
     elif userSelection == 'help':
         print('available commands are:')
-        print('category, creates a new category')
-        print('newteam, adds a new team')
-        print('list, lists current teams in rank order')
-        print('quit, quits the app')
+        print('category, creates a new category\n')
+        print('newteam, adds a new team\n')
+        print('list, lists current teams in rank order\n')
+        print('quit, quits the app\n')
         print('\n\n')
     elif userSelection == 'quit':
         break

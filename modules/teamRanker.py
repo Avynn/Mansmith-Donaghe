@@ -96,9 +96,9 @@ def sortTeams(aList):
     PRE: takes a list.
     POST: sorts list by the fith index of all it's indicies.
     '''
-    print('ping!')
+    print(teamLength)
     i = 0
-    while i < teamLength:
+    while i < len(aList) - 1:
         #print(i)
         posSwapper(aList, i, findMinimumIndex(aList, i))
         i+=1
