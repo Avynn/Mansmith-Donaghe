@@ -15,6 +15,7 @@ import teamRanker
 import newCategory
 import newTeams
 import teamPrototypes
+import teamStore
 ###/local imports###
 
 ###teamData initialization#####
@@ -84,17 +85,20 @@ while True:
     if userSelection == 'category':
         newCategory.addNewCategory(teamData)
     elif userSelection == 'newteam':
-        teamData.append(newTeams.addNewTeam(statsPrototype))
-        teamData[teamDataLength].append(statCalculator.calculateScores(teamDataLength, .15, .4, .2, .15, MetaData, teamData))
-        teamRanker.sortTeams(teamData)
-        print('success!')
+        try:
+            teamData.append(newTeams.addNewTeam(statsPrototype))
+            teamData[teamDataLength].append(statCalculator.calculateScores(teamDataLength, .15, .4, .2, .15, MetaData, teamData))
+            teamRanker.sortTeams(teamData)
+            print('success!')
+        except:
+            print('an error occured, you probably entered the wrong datatype somewhere.')
         print('\n\n')
     elif userSelection == 'list':
         teamRanker.sortTeams(teamData)
         j = len(teamData) - 1
         while j >= 0:
             print(teamData[j])
-            j -= 1 
+            j -= 1
         print('\n\n')
     elif userSelection == 'help':
         print('available commands are:')
@@ -103,6 +107,22 @@ while True:
         print('list, lists current teams in rank order\n')
         print('quit, quits the app\n')
         print('\n\n')
+    elif userSelection == 'save':
+        print('saving...')
+        try:
+            cleanedData = teamStore.cleanTeamData(teamData)
+            teamStore.saveData(cleanedData)
+            teamData = dataParser.initializeTeamData()
+            teamDataLength = len(teamData)
+            i = 0
+            while i < teamDataLength:
+                statScore = statCalculator.calculateScores(i, .15, .4, .2, .15, MetaData, teamData)
+                teamData[i].append(statScore)
+                #print(teamData[i][5])
+                i += 1
+            print('Success!')
+        except:
+            print('there was an error!')
     elif userSelection == 'quit':
         break
     else:

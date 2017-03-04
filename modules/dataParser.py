@@ -4,6 +4,10 @@ path = 'store/'
 if __name__ == "__main__":
     path = '../store/'
 
+path2 = 'savedData/'
+if __name__ == "__main__":
+   path2 = '../savedData/'
+
 ###########note#############
 '''
 do not use these JSON functions for normal api usage
@@ -90,7 +94,7 @@ def dataCleaner(i):
     return cleanArray
 
 
-def initializeTeamData():
+def initializeJSONTeamData():
     '''
     void -> list
     PRE: utilizes previously written functions.
@@ -106,3 +110,31 @@ def initializeTeamData():
             return teamData
 
 #############/note#############
+
+def initializeTeamData():
+    '''
+    void -> list
+    POST: returns a list with team data from new saved data folder.
+    '''
+    returnedData = []
+    savedDataList = [name for name in os.listdir(path2) if os.path.isfile(os.path.join(path2, name))]
+    savedDataList.sort()
+    filePath = path2 + savedDataList[-1]
+    openedData = open(filePath, 'r')
+    for line in openedData:
+        line = line.strip('[')
+        line = line.strip('\n')
+        line = line.strip(']')
+        line = line.split(',')
+        line[1] = line[1].strip(' ')
+        line[2] = line[2].strip(' ')
+        line[3] = line[3].strip(' ')
+        line[4] = line[4].strip(' ')
+        line[4] = line[4].strip("'")
+        line[0] = float(line[0])
+        line[1] = float(line[1])
+        line[2] = float(line[2])
+        line[3] = float(line[3])
+        returnedData.append(line)
+    openedData.close()
+    return returnedData
