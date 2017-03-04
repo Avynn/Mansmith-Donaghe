@@ -16,6 +16,7 @@ import newCategory
 import newTeams
 import teamPrototypes
 import teamStore
+import bracketSimulator
 ###/local imports###
 
 ###teamData initialization#####
@@ -124,6 +125,9 @@ while True:
             print('Success!')
         except:
             print('there was an error!')
+    elif userSelection == 'bracket':
+        bracketSimulator.simulateBrackets(teamData)
+        
     elif userSelection == 'quit':
         break
     else:
