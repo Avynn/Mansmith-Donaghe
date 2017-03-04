@@ -1,11 +1,16 @@
 import dataParser, datetime, os
 
 teamData = dataParser.initializeTeamData()
-path = 'savedData/'
-if __name__ == '__main__':
-    path = '../savedData/'
+path = '../savedData/'
+#if __name__ == '__main__':
+#    path = '../savedData/'
 
 def cleanTeamData(teams):
+    '''
+    list -> void
+    PRE: takes a list.
+    POST: chops the last index off.
+    '''
     returnValues = []
     for team in teams:
         team = team[:5]
@@ -32,3 +37,17 @@ def saveData(teams):
     for team in teams:
         print(team, file = outData)
     outData.close()
+
+def saveTeamNames(teams):
+    '''
+    list -> void
+    PRE: takes list
+    POST: saves list to a .csv document.
+    '''
+    print('updating team names...')
+    outData = open('modules/teamNames.csv', 'w')
+    for team in teams:
+        print(team[4], file = outData)
+
+    outData.close()
+saveTeamNames(teamData)

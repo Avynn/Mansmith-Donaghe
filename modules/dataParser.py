@@ -138,3 +138,14 @@ def initializeTeamData():
         returnedData.append(line)
     openedData.close()
     return returnedData
+
+def initializeTeamNameList():
+    '''
+    '''
+    returnedData = []
+    openedData = open('modules/teamNames.csv', 'r')
+    for line in openedData:
+        line = line.strip('\n')
+        returnedData.append(line)
+    openedData.close()
+    return returnedData

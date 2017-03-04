@@ -22,6 +22,7 @@ import teamStore
 teamData = dataParser.initializeTeamData()
 teamDataLength = len(teamData)
 statsPrototype = teamPrototypes.stats
+teamNameList = dataParser.initializeTeamNameList()
 ###/teamData init######
 
 ###teamRanking initialization###
